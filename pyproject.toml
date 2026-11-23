@@ -1,7 +1,7 @@
 [project]
 name = "atlas-benchmark"
 version = "0.1.0"
-description = "Atlas: 다자 채팅 메모리 평가용 합성 데이터와 그 구축 파이프라인"
+description = "atlas: 다자 채팅 메모리 평가용 합성 데이터와 그 구축 파이프라인"
 requires-python = ">=3.11,<3.14"
 dependencies = [
     "tiktoken>=0.7",

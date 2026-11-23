@@ -1,4 +1,4 @@
-# Atlas
+# *atlas*
 
 여러 사람이 함께 쓰는 채팅 환경에서 동작하는 메모리 시스템을 평가하기 위한 합성 데이터셋임. 가상의 제품 팀 5명이 약 6주 동안 채널 17개에서 나눈 메시지 4,353개와, 그 대화 중간의 특정 시점에 특정 팀원이 어시스턴트에게 던지는 질문 415개로 이루어져 있음.
 
@@ -114,6 +114,50 @@ bash scripts/build.sh gpt-5.6-luna luna2-rerun 3 7 8
 - [docs/DESIGN.md](docs/DESIGN.md): 설정, 사안과 유사 사안, 질문과 라벨의 설계
 - [docs/CONSTRUCTION.md](docs/CONSTRUCTION.md): 구축 절차, 파라미터, 프롬프트, 실행 기록
 - [docs/DATA_FORMAT.md](docs/DATA_FORMAT.md): 파일과 필드, 메시지 라벨 목록
+
+## Citation
+
+이 데이터셋을 쓸 때는 다음과 같이 인용함. GitHub의 "Cite this repository" 버튼에서도 같은 정보를 받을 수 있음([CITATION.cff](CITATION.cff)).
+
+```bibtex
+@misc{atlas2026,
+  author = {Lee, Dongjin and Kim, Wonjin and Choi, Yongbin and Sung, Mujeen},
+  title  = {atlas: A Synthetic Multi-Party Chat Dataset for Evaluating Memory Systems},
+  year   = {2026},
+  month  = {11},
+  note   = {Version 0.1},
+  url    = {https://github.com/actiondongjin/atlas-benchmark}
+}
+```
+
+국문 표기: 이동진, 김원진, 최용빈, 성무진. atlas (v0.1). 2026. https://github.com/actiondongjin/atlas-benchmark
+
+| 저자 | 소속 |
+|---|---|
+| Dongjin Lee (이동진) | Department of Software Convergence, Kyung Hee University |
+| Wonjin Kim (김원진) | School of Computing, Kyung Hee University |
+| Yongbin Choi (최용빈) | School of Computing, Kyung Hee University |
+| Mujeen Sung (성무진), 교신저자 | School of Computing, Kyung Hee University |
+
+이 데이터셋을 사용한 논문:
+
+이동진, 김원진, 최용빈, 성무진. "다자 대화 메모리에서 희소·밀집·하이브리드 검색의 정확도와 정보 보호 비교." 한국정보과학회 KSC 2026.
+
+```bibtex
+@inproceedings{lee2026atlas,
+  author    = {Lee, Dongjin and Kim, Wonjin and Choi, Yongbin and Sung, Mujeen},
+  title     = {Accuracy and Information Protection of Sparse, Dense, and Hybrid Retrieval in Multi-Party Conversational Memory},
+  booktitle = {Korea Software Congress (KSC 2026)},
+  year      = {2026},
+  note      = {In Korean}
+}
+```
+
+## Acknowledgement
+
+본 연구는 과학기술정보통신부 및 정보통신기획평가원의 2026년도 SW중심대학사업의 결과로 수행되었음 (2023-0-00042)
+
+This research was supported by the MSIT (Ministry of Science and ICT), Korea, under the National Program for Excellence in SW (2023-0-00042) supervised by the IITP (Institute of Information & Communications Technology Planning & Evaluation) in 2026.
 
 ## License
 

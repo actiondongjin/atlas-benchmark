@@ -1,0 +1,61 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it as below."
+type: dataset
+title: "atlas: A Synthetic Multi-Party Chat Dataset for Evaluating Memory Systems"
+abstract: >-
+  atlas is a synthetic dataset for evaluating memory systems that operate in
+  multi-party chat. It contains 4,353 messages exchanged by a fictional
+  five-person product team across 17 channels over about six weeks, and 415
+  questions asked by specific team members at specific points in the
+  conversation. Each member can see only the channels they belong to, so the
+  correct answer to a question, and what must not be disclosed in it, depend
+  on who is asking.
+authors:
+  - family-names: Lee
+    given-names: Dongjin
+    affiliation: "Department of Software Convergence, Kyung Hee University"
+    orcid: "https://orcid.org/0009-0009-7675-710X"
+  - family-names: Kim
+    given-names: Wonjin
+    affiliation: "School of Computing, Kyung Hee University"
+  - family-names: Choi
+    given-names: Yongbin
+    affiliation: "School of Computing, Kyung Hee University"
+  - family-names: Sung
+    given-names: Mujeen
+    affiliation: "School of Computing, Kyung Hee University"
+contact:
+  - family-names: Sung
+    given-names: Mujeen
+    affiliation: "School of Computing, Kyung Hee University"
+version: "0.1"
+date-released: "2026-11-23"
+repository-code: "https://github.com/actiondongjin/atlas-benchmark"
+url: "https://github.com/actiondongjin/atlas-benchmark"
+license:
+  - CC-BY-4.0
+  - MIT
+references:
+  - type: conference-paper
+    title: "Accuracy and Information Protection of Sparse, Dense, and Hybrid Retrieval in Multi-Party Conversational Memory"
+    authors:
+      - family-names: Lee
+        given-names: Dongjin
+      - family-names: Kim
+        given-names: Wonjin
+      - family-names: Choi
+        given-names: Yongbin
+      - family-names: Sung
+        given-names: Mujeen
+    conference:
+      name: "Korea Software Congress (KSC 2026)"
+    year: 2026
+    languages:
+      - ko
+    notes: "다자 대화 메모리에서 희소·밀집·하이브리드 검색의 정확도와 정보 보호 비교"
+keywords:
+  - benchmark
+  - synthetic dataset
+  - conversational memory
+  - multi-party conversation
+  - access control
