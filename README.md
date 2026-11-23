@@ -114,3 +114,12 @@ bash scripts/build.sh gpt-5.6-luna luna2-rerun 3 7 8
 - [docs/DESIGN.md](docs/DESIGN.md): 설정, 사안과 유사 사안, 질문과 라벨의 설계
 - [docs/CONSTRUCTION.md](docs/CONSTRUCTION.md): 구축 절차, 파라미터, 프롬프트, 실행 기록
 - [docs/DATA_FORMAT.md](docs/DATA_FORMAT.md): 파일과 필드, 메시지 라벨 목록
+
+## License
+
+| 대상 | 라이선스 | 전문 |
+|---|---|---|
+| 데이터와 문서(`data/`, `scenario/`, `docs/`, `README.md`) | CC BY 4.0 | [LICENSE](LICENSE) |
+| 코드(`synth/`, `scripts/`) | MIT | [LICENSE-CODE](LICENSE-CODE) |
+
+출처를 밝히면 누구나 복제, 수정, 재배포할 수 있고 상업적 이용도 가능함.
