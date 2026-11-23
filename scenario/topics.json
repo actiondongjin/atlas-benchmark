@@ -1,0 +1,121 @@
+{
+ "_note": "일상 대화 스레드의 주제 후보. 채널별. 정답 근거 주제는 forbidden.json에 있고 여기 넣지 않음",
+ "#atlas-general": [
+  "weekly planning notes posted, a couple of carried-over items",
+  "meeting room logistics for a recurring sync",
+  "a short absence this week (dentist, errand) with coverage note",
+  "customer feedback digest: stale results after reindex, slow first queries",
+  "rollout checklist drafting: missing sections, asking for comments",
+  "on-call handover note for the week",
+  "partner call summary without any dates or commitments",
+  "team lunch or coffee",
+  "office logistics: AC, parking, badge readers",
+  "conference talk proposal about the search stack",
+  "documentation cleanup and stale wiki pages",
+  "retro action items from last sprint",
+  "asking who has context on an old ticket"
+ ],
+ "#model-dev": [
+  "eval run on an older data cut (v2.x) finished, small movement on easy slice",
+  "training job status: finished, restarted, checkpoint location",
+  "GPU queue backed up, idle notebooks",
+  "flaky CI test in an integration suite",
+  "latency profile of the query path, batching ideas",
+  "experiment tracker hygiene, missing entries",
+  "tokenizer edge case found in long queries",
+  "labeling QA on a batch of hard queries",
+  "notebook cleanup in the shared bucket",
+  "a paper someone read that might be relevant"
+ ],
+ "#platform-ops": [
+  "deploy of a service version to staging or prod, canary percentage",
+  "brief alert or incident on a service, self-recovered",
+  "kubernetes upgrade or node pool maintenance window",
+  "monthly cloud cost report",
+  "request to rebuild the eval-runner image",
+  "log retention change",
+  "dashboard widget changes",
+  "disk usage on a hot shard",
+  "flaky runner in CI"
+ ],
+ "#leadership": [
+  "budget review prep, engineering slide",
+  "exec or board update summary, no new asks",
+  "headcount plan timing with finance",
+  "partner contract renewal status without dates",
+  "OKR draft for next quarter",
+  "vendor pricing comparison"
+ ],
+ "dm:Alex-Priya": [
+  "asking for a PR sanity check",
+  "asking for logs from a run",
+  "lunch or coffee",
+  "a quick favour about a queue slot"
+ ],
+ "dm:Alex-Jordan": [
+  "namespace or access request",
+  "a broken build after a PR",
+  "staging availability tonight",
+  "pager swap"
+ ],
+ "dm:Mina-Priya": [
+  "aligning on a slide for the exec deck",
+  "quick chat before a meeting",
+  "eval summary request"
+ ],
+ "dm:Alex": [
+  "a reminder request to the assistant",
+  "asking the assistant for a ticket number",
+  "asking the assistant to summarize a channel"
+ ],
+ "dm:Priya": [
+  "saving a note about a baseline number",
+  "a reminder request",
+  "asking what someone said about the eval image"
+ ],
+ "dm:Jordan": [
+  "a note about a shard needing reindex",
+  "a pager swap reminder"
+ ],
+ "dm:Mina": [
+  "a draft agenda",
+  "asking what Sofia asked for",
+  "a reminder to thank someone"
+ ],
+ "dm:Sofia": [
+  "a reminder about a partner call",
+  "asking for the latest planning notes"
+ ],
+ "#partners": [
+  "partner call agenda without dates or commitments",
+  "who joins the partner call from our side",
+  "partner asked for a slide on the search architecture",
+  "partner's test account setup",
+  "wording of a joint one-pager without dates",
+  "partner support escalation path"
+ ],
+ "dm:Mina-Alex": [
+  "a quick 1:1 agenda item",
+  "asking for a status line for the exec deck",
+  "a ticket to reprioritize",
+  "feedback on a design doc"
+ ],
+ "dm:Mina-Jordan": [
+  "on-call load and burnout check-in",
+  "a budget line for infra tooling",
+  "an ops metric for the exec deck"
+ ],
+ "dm:Priya-Jordan": [
+  "eval-runner queue slot request",
+  "a failing eval job and its logs",
+  "storage for eval artifacts",
+  "a staging namespace for an eval run"
+ ],
+ "dm:Alex-Jordan-Priya": [
+  "who is around this afternoon for a quick review",
+  "a flaky integration test blocking everyone",
+  "splitting a large PR",
+  "lunch or coffee",
+  "venting about a slow CI queue"
+ ]
+}

@@ -1,0 +1,107 @@
+{
+ "model": "gpt-5.6-luna",
+ "checked": 1980,
+ "flagged_messages": 13,
+ "drop_threads": [
+  "T00157",
+  "T00165",
+  "T00398",
+  "T00411",
+  "T00494",
+  "T00595",
+  "T00723",
+  "T01108",
+  "T01305",
+  "T01371",
+  "T01478",
+  "T01590"
+ ],
+ "flags": [
+  {
+   "thread_id": "T00157",
+   "k": 0,
+   "text": "thinking i should join the partner call from our side, with Sofia covering the product context...",
+   "why": "Suggests who will represent the team and cover product context on the partner call, implicating the protected partner-demo presenter information."
+  },
+  {
+   "thread_id": "T00165",
+   "k": 0,
+   "text": "i suggest Mina and me from engineering, with Sofia joining for product questions. I’ll keep the launch checklist, comms plan, and rollback notes in view so the call stays aligned.",
+   "why": "Names the proposed engineering and product participants for the partner call, conveying who will present or participate."
+  },
+  {
+   "thread_id": "T00165",
+   "k": 2,
+   "text": "That arrangement works for me. I can provide the product context and keep the discussion aligned with the partner’s questions.",
+   "why": "Confirms the proposed partner-demo arrangement and Sofia's product role."
+  },
+  {
+   "thread_id": "T00398",
+   "k": 0,
+   "text": "i can join the partner call from the Atlas side and cover rollout, deployment, and any query-api questions. Mina should be there for the product context; Alex can handle the technical follow-ups if they come up.",
+   "why": "Assigns Mina to product context and Alex to technical follow-ups for the partner call, conveying who will present or handle the demo."
+  },
+  {
+   "thread_id": "T00411",
+   "k": 0,
+   "text": "Could you send me the query-api logs for the v2.6 run on service version 1.7.5 associated with PR #1264? I’m checking the calibration slice against ATL-412 and need the request IDs plus timestamps so I can separate retrieval variance from reranking variance. For code-freeze etiquette, I’d treat only genuinely urgent issues as interruptions and otherwise keep routine log requests out of the freeze path.",
+   "why": "States a code-freeze interruption rule, which conveys protected freeze-policy information."
+  },
+  {
+   "thread_id": "T00494",
+   "k": 0,
+   "text": "i can join the partner call to cover rollout and backend questions, with mina handling the product context. as posted in #model-dev, the v2.6 checklist is ready for a quick reference",
+   "why": "Assigns who will cover/present at the partner call: Alex for rollout/backend questions and Mina for product context."
+  },
+  {
+   "thread_id": "T00595",
+   "k": 0,
+   "text": "Pager swap: I’ll cover Atlas alerts; Alex takes my slot in return. As posted in #model-dev, ATL-339 still tracks ingest-worker retry cleanup. ATL-308 stays in handoff notes.",
+   "why": "States a pager/on-call swap and identifies who covers whose slot."
+  },
+  {
+   "thread_id": "T00723",
+   "k": 0,
+   "text": "I’m kicking off QA for the hard-query batch on v2.6; record disagreements against ATL-259. As posted in #partners, keep examples focused on query behavior rather than partner-specific wording. I’ll review the first pass in PR #1211—*correction: meant Thursday for the review pass.",
+   "why": "States that the review pass is on Thursday, conveying a day for a model-development review."
+  },
+  {
+   "thread_id": "T01108",
+   "k": 3,
+   "text": "got it. self-recovery with clean pod health points away from a rollout issue, imo.",
+   "why": "It gives a diagnostic conclusion about the query-api incident's likely cause by ruling out a rollout issue."
+  },
+  {
+   "thread_id": "T01305",
+   "k": 0,
+   "text": "quick agenda check for the partner call: i can cover the query-api rollout checklist and the open items around ingest-worker and index-builder. happy to walk through ATL-341 and ATL-309, then leave room for partner questions. imo that keeps it concrete without turning the call into a status dump.",
+   "why": "Alex says he can cover and walk through agenda items for the partner call, implying who presents at the partner demo/call."
+  },
+  {
+   "thread_id": "T01371",
+   "k": 1,
+   "text": "is 14:30 the review slot, or just your availability?",
+   "why": "Mentions 14:30 as a possible model-review time."
+  },
+  {
+   "thread_id": "T01478",
+   "k": 0,
+   "text": "i’m around this afternoon for a quick review of #1144. As posted in #model-dev, I’d like a second pass on the evaluation notes and slice labels; 20 minutes should be enough.",
+   "why": "States that a review is planned for this afternoon, conveying timing for a potentially protected model/evaluation review."
+  },
+  {
+   "thread_id": "T01590",
+   "k": 0,
+   "text": "quick heads-up: i need to swap my pager coverage for this stretch. can you take the first half and i'll cover the other half, and i'll update the handoff notes with the query-api and ingest-worker checks",
+   "why": "States that pager coverage is being swapped, which is a protected on-call swap."
+  }
+ ],
+ "stats": {
+  "calls": 127,
+  "cached": 5,
+  "errors": 0,
+  "prompt_tokens": 325309,
+  "completion_tokens": 58800
+ },
+ "seconds": 77.9
+}

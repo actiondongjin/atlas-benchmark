@@ -1,0 +1,9 @@
+{
+ "model": "gpt-5.6-luna",
+ "seed": 7,
+ "scale": 3.0,
+ "threads": 2037,
+ "dropped_threads": 14,
+ "messages": 4174,
+ "words": 115400
+}

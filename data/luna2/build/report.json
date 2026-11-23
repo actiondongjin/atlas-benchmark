@@ -1,0 +1,56 @@
+{
+ "ok": true,
+ "errors": [],
+ "warnings": [],
+ "stats": {
+  "messages": 4353,
+  "basis": 174,
+  "distractor": 30,
+  "filler": 4149,
+  "replies": 2217,
+  "threads": 2136,
+  "words": 117920,
+  "approx_tokens": 159192,
+  "tokens_o200k": {
+   "text": 157523,
+   "transcript_lines": 236801
+  },
+  "by_channel": {
+   "#atlas-general": 716,
+   "dm:Alex-Priya": 293,
+   "dm:Mina-Alex": 161,
+   "dm:Mina-Priya": 190,
+   "#model-dev": 855,
+   "#partners": 233,
+   "#platform-ops": 855,
+   "dm:Alex": 38,
+   "dm:Priya": 37,
+   "#leadership": 231,
+   "dm:Alex-Jordan-Priya": 191,
+   "dm:Alex-Jordan": 237,
+   "dm:Priya-Jordan": 135,
+   "dm:Mina-Jordan": 106,
+   "dm:Jordan": 30,
+   "dm:Mina": 25,
+   "dm:Sofia": 20
+  },
+  "perturbations": {
+   "style": 985,
+   "disagreement": 492,
+   "noise": 98,
+   "decision_change": 9
+  },
+  "ratios": {
+   "noise_of_all": 0.023,
+   "disagreement_of_replies": 0.222,
+   "style_of_all": 0.226
+  },
+  "questions": 415,
+  "question_types": {
+   "personal_stance": 65,
+   "current_state": 272,
+   "history": 78
+  },
+  "pairs": 47
+ }
+}

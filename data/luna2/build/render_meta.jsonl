@@ -1,0 +1,26 @@
+{"thread_id": "T00063", "attempts": 3, "fallback": true, "violations": [{"0": ["dashboard_outage"]}, {"0": ["dashboard_outage"]}, {"0": ["dashboard_outage"]}]}
+{"thread_id": "T00094", "attempts": 2, "fallback": false, "violations": [{"0": ["key_rotation"]}]}
+{"thread_id": "T00168", "attempts": 2, "fallback": false, "violations": [{"0": ["distractor_facts_v01"]}]}
+{"thread_id": "T00173", "attempts": 3, "fallback": true, "violations": [{"0": ["dashboard_outage"]}, {"0": ["dashboard_outage"]}, {"0": ["dashboard_outage"]}]}
+{"thread_id": "T00232", "attempts": 3, "fallback": true, "violations": [{"0": ["dashboard_outage"]}, {"0": ["dashboard_outage"], "2": ["dashboard_outage"]}, {"0": ["dashboard_outage"]}]}
+{"thread_id": "T00277", "attempts": 2, "fallback": false, "violations": [{"0": ["key_rotation"]}]}
+{"thread_id": "T00396", "attempts": 3, "fallback": true, "violations": [{"0": ["dashboard_outage"]}, {"0": ["dashboard_outage"]}, {"0": ["dashboard_outage"]}]}
+{"thread_id": "T00468", "attempts": 3, "fallback": true, "violations": [{"0": ["dashboard_outage"]}, {"0": ["dashboard_outage"]}, {"0": ["dashboard_outage"]}]}
+{"thread_id": "T00483", "attempts": 3, "fallback": true, "violations": [{"0": ["dashboard_outage"]}, {"0": ["dashboard_outage"]}, {"0": ["dashboard_outage"]}]}
+{"thread_id": "T00670", "attempts": 2, "fallback": false, "violations": [{"0": ["time_off_priya"]}]}
+{"thread_id": "T00901", "attempts": 2, "fallback": false, "violations": [{"1": ["new_arcs"]}]}
+{"thread_id": "T01000", "attempts": 3, "fallback": true, "violations": [{"0": ["dashboard_outage"]}, {"0": ["dashboard_outage"]}, {"0": ["dashboard_outage"]}]}
+{"thread_id": "T01042", "attempts": 3, "fallback": true, "violations": [{"0": ["dashboard_outage"]}, {"0": ["dashboard_outage"], "1": ["dashboard_outage"]}, {"0": ["dashboard_outage"], "1": ["dashboard_outage"]}]}
+{"thread_id": "T01155", "attempts": 3, "fallback": true, "violations": [{"0": ["dashboard_outage"]}, {"0": ["dashboard_outage"]}, {"0": ["dashboard_outage"]}]}
+{"thread_id": "T01216", "attempts": 2, "fallback": false, "violations": [{"0": ["partner_figure"]}]}
+{"thread_id": "T01221", "attempts": 3, "fallback": true, "violations": [{"0": ["dashboard_outage"], "1": ["dashboard_outage"]}, {"0": ["dashboard_outage"]}, {"0": ["dashboard_outage"], "1": ["dashboard_outage"]}]}
+{"thread_id": "T01341", "attempts": 2, "fallback": false, "violations": [{"0": ["retro"]}]}
+{"thread_id": "T01343", "attempts": 2, "fallback": false, "violations": [{"0": ["migration_owner"]}]}
+{"thread_id": "T01395", "attempts": 3, "fallback": true, "violations": [{"0": ["dashboard_outage"]}, {"0": ["dashboard_outage"]}, {"0": ["dashboard_outage"]}]}
+{"thread_id": "T01404", "attempts": 2, "fallback": false, "violations": [{"0": ["key_rotation", "dashboard_outage"]}]}
+{"thread_id": "T01445", "attempts": 2, "fallback": false, "violations": []}
+{"thread_id": "T01688", "attempts": 2, "fallback": false, "violations": [{"0": ["standup_time"]}]}
+{"thread_id": "T01731", "attempts": 2, "fallback": false, "violations": [{"0": ["key_rotation"]}]}
+{"thread_id": "T01933", "attempts": 3, "fallback": true, "violations": [{"0": ["dashboard_outage"]}, {"0": ["dashboard_outage"]}, {"0": ["dashboard_outage"]}]}
+{"thread_id": "T01973", "attempts": 3, "fallback": true, "violations": [{"0": ["dashboard_outage"]}, {"0": ["dashboard_outage"]}, {"0": ["dashboard_outage"]}]}
+{"thread_id": "T02002", "attempts": 3, "fallback": true, "violations": [{"0": ["dashboard_outage"]}, {"0": ["dashboard_outage"]}, {"0": ["dashboard_outage"]}]}

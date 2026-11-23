@@ -1,0 +1,234 @@
+{
+ "_note": "일상 대화(정답 근거·유사 사안가 아닌 메시지)에 나오면 안 되는 '사실'. 주제 단어(launch, reranker, threshold 등)는 허용하고, 날짜·수치·선택·담당자·사유·결정 같은 값만 막음. patterns는 정규식 검사(문장 안 50자 창), facts는 LLM 프롬프트와 판정용 설명, touch_topics는 일상 대화가 지나가며 언급하도록 권하는 주제.",
+ "patterns": [
+  {
+   "name": "launch_date",
+   "re": "(september|sept?\\.?) ?30|(october|oct\\.?) ?[67]\\b|\\blegal\\b|launch\\w*[^.!?\\n]{0,50}(monday|tuesday|wednesday|thursday|friday|next week|this week|tomorrow|september|october|\\bsep\\b|\\boct\\b|\\b\\d{1,2}(st|nd|rd|th)\\b|end of (the )?month)|(monday|tuesday|wednesday|thursday|friday|next week|this week|tomorrow|september|october|\\bsep\\b|\\boct\\b|\\b\\d{1,2}(st|nd|rd|th)\\b)[^.!?\\n]{0,50}launch|launch\\w*[^.!?\\n]{0,50}(moved|slip|delay|pushed|postpone)|(moved|slip|delay|pushed|postpone)[^.!?\\n]{0,50}launch"
+  },
+  {
+   "name": "reranker_choice",
+   "re": "reranker-? ?[ab]\\b|option [ab]\\b|(prefer|pick|chose|choose|choice|decid|go with|switch(ing)? to|settled on|winner|wins?\\b|\\bwon\\b|better)[^.!?\\n]{0,50}reranker|reranker[^.!?\\n]{0,50}(prefer|pick|chose|choose|choice|decid|go with|switch|settled|winner|wins?\\b|\\bwon\\b|is better|beats)|production reranker|benchmark result|full benchmark"
+  },
+  {
+   "name": "threshold_value",
+   "re": "\\b0\\.[78]\\d\\b|regression[- ]gate[^.!?\\n]{0,50}\\d|(gate|threshold|cutoff)[^.!?\\n]{0,50}(is|to|at|of|=)\\s*0?\\.\\d|(quality|minimum) score[^.!?\\n]{0,50}\\d"
+  },
+  {
+   "name": "standup_time",
+   "re": "stand-?up[^.!?\\n]{0,50}\\b\\d{1,2}(:\\d\\d)?\\s?(am|pm)?\\b|\\b\\d{1,2}(:\\d\\d)?\\s?(am|pm)?\\b[^.!?\\n]{0,50}stand-?up|\\b9:30\\b|stand-?up[^.!?\\n]{0,50}(moved|moving|back to|earlier|later)"
+  },
+  {
+   "name": "migration_owner",
+   "re": "(alex|jordan|priya|mina|sofia)[^.!?\\n]{0,50}index migration|index migration[^.!?\\n]{0,50}(alex|jordan|priya|mina|sofia)|(own|owner|taking over|hand(ing|ed) (over|off)|lead)[^.!?\\n]{0,50}index migration|index migration[^.!?\\n]{0,50}(owner|owned|handed)|shard inventory"
+  },
+  {
+   "name": "freeze_window",
+   "re": "freeze[^.!?\\n]{0,50}(monday|tuesday|wednesday|thursday|friday|next week|this week|tomorrow|september|october|\\bsep\\b|\\boct\\b|\\b\\d{1,2}(st|nd|rd|th)\\b|\\b\\d{1,2}\\b)|(monday|tuesday|wednesday|thursday|friday|next week|this week|tomorrow|september|october|\\bsep\\b|\\boct\\b|\\b\\d{1,2}(st|nd|rd|th)\\b)[^.!?\\n]{0,50}freeze|freeze[^.!?\\n]{0,50}(moved|shifted|pushed)"
+  },
+  {
+   "name": "p99",
+   "re": "p99[^.!?\\n]{0,50}(fail|budget|reranker|clean|seed)|reranker[^.!?\\n]{0,50}p99|warm-?cache"
+  },
+  {
+   "name": "dataset_version",
+   "re": "v3\\.\\d|reporting standard"
+  },
+  {
+   "name": "review_time",
+   "re": "model review[^.!?\\n]{0,50}(\\b\\d{1,2}(:\\d\\d)?\\b|monday|tuesday|wednesday|thursday|friday|moved|moving)|(\\b\\d{1,2}:\\d\\d\\b|monday|tuesday|wednesday|thursday|friday|moved|moving)[^.!?\\n]{0,50}model review"
+  },
+  {
+   "name": "hiring_decision",
+   "re": "\\bl[3-7]\\b|(backend|senior|engineer|candidate)[^.!?\\n]{0,50}(offer|accepted|declined|start(s|ing)? (on|in|october))|(offer|accepted)[^.!?\\n]{0,50}(backend|candidate)|october 12|oct 12|onboarding[^.!?\\n]{0,50}(alex|jordan|priya|mina|sofia)|(alex|jordan|priya|mina|sofia)[^.!?\\n]{0,50}onboarding|debrief|(onsite|interview)[^.!?\\n]{0,50}(monday|tuesday|wednesday|thursday|friday)|interview panel|on the panel"
+  },
+  {
+   "name": "key_rotation",
+   "re": "embed-service[^.!?\\n]{0,50}(key|token|credential)|(key|token|credential)[^.!?\\n]{0,50}embed-service|exposed|public repo|github|scrub|(leak|expos)\\w*[^.!?\\n]{0,50}(key|token|secret)|(key|token|secret)[^.!?\\n]{0,50}(leak|expos)|security incident|rotat\\w*[^.!?\\n]{0,50}(because|due to|reason|routine)|routine[^.!?\\n]{0,50}rotat"
+  },
+  {
+   "name": "time_off_priya",
+   "re": "priya[^.!?\\n]{0,50}(\\boff\\b|vacation|pto|leave|out of (the )?office)|(\\boff\\b|vacation|pto|leave|out of (the )?office)[^.!?\\n]{0,50}priya|(october|oct)\\.? ?(1|2|3|5|6|8|9|10)\\b|(time off|vacation|days off|pto)[^.!?\\n]{0,50}(october|oct)"
+  },
+  {
+   "name": "gpu_count",
+   "re": "\\b(one|two|three|four|five|six|seven|eight|\\d{1,2})\\s+(extra |additional |more |new )?(h100|a100|gpu|node)s?\\b[^.!?\\n]{0,50}(approv|order|purchas|\\bget\\b|getting|coming|arriv|land)|(approv|order|purchas|getting|coming|arriv)[^.!?\\n]{0,50}\\b(one|two|three|four|five|six|\\d{1,2})\\s+(extra |additional |more |new )?(h100|a100|gpu|node)|procurement confirms|purchase order|finance approved|gpu capacity[^.!?\\n]{0,50}(october|oct|\\d)"
+  },
+  {
+   "name": "demo_presenter",
+   "re": "present\\w*[^.!?\\n]{0,50}demo|demo[^.!?\\n]{0,50}present\\w*|(alex|jordan|priya|mina|sofia)[^.!?\\n]{0,50}(demo(ing)?\\b|present)|(demo(ing)?\\b|present)[^.!?\\n]{0,50}(alex|jordan|priya|mina|sofia)|demo lineup"
+  },
+  {
+   "name": "absence_alex",
+   "re": "interview|personal appointment|alex[^.!?\\n]{0,50}(friday afternoon|2 to 5|unavailable|offline|out (on )?friday)|(friday afternoon|2 to 5|unavailable|offline)[^.!?\\n]{0,50}alex"
+  },
+  {
+   "name": "reservation",
+   "re": "safer call|reservations? about|would have (picked|gone with)"
+  },
+  {
+   "name": "collection_rebuild",
+   "re": "(docs|tickets) collection|(docs|tickets)[^.!?\\n]{0,50}(rebuild|reindex)[^.!?\\n]{0,50}(done|finished|complete|still running|running)|(rebuild|reindex)[^.!?\\n]{0,50}(docs|tickets)[^.!?\\n]{0,50}(done|finished|complete|running)"
+  },
+  {
+   "name": "awareness",
+   "re": "alex[^.!?\\n]{0,50}(knows|aware|acknowledg|looped)|(announce|told the team)[^.!?\\n]{0,50}(date|launch)"
+  },
+  {
+   "name": "new_arcs",
+   "re": "eval report[^.!?\\n]{0,50}(behind|delay|late|thursday)|family matter|misconfig|config drift|pool size|reorg|board[^.!?\\n]{0,50}(weigh|consider)|platform org|contractor[^.!?\\n]{0,50}(spend|budget|cut|tighten)|20 percent|weekend on-?call[^.!?\\n]{0,50}(alex|priya|jordan)|(alex|priya|jordan)[^.!?\\n]{0,50}(weekend on-?call|covers the weekend|has the weekend|on-?call this weekend|takes? the weekend)|the 19th|vendor quote[^.!?\\n]{0,50}(\\d|per node)|1,?200 (dollars|usd)|per node per month|worried[^.!?\\n]{0,50}(eval|timeline|freeze)|hard[- ]slice[^.!?\\n]{0,50}(ready|worried|timeline)|eval timeline"
+  },
+  {
+   "name": "distractor_facts",
+   "re": "alert threshold[^.!?\\n]{0,50}\\d|blog post[^.!?\\n]{0,50}(october|oct|live)|auth db migration|design review[^.!?\\n]{0,50}(monday|tuesday|wednesday|thursday|friday|\\d{1,2}:\\d\\d)|jordan[^.!?\\n]{0,50}(day off|taking [^.!?\\n]{0,12}off|\\bpto\\b|has the pager that day)|intern[^.!?\\n]{0,50}(offer|onsite|candidate)|sales demo|platform sync[^.!?\\n]{0,50}\\d|dashboard (api )?token|latency probe"
+  },
+  {
+   "name": "bootcamp",
+   "re": "bootcamp[^.!?\\n]{0,50}(tuesday|wednesday|next week|\\b1[34]\\b|october|\\boct\\b)|(october|\\boct\\b)[^.!?\\n]{0,50}bootcamp|\\bbootcamp\\b[^.!?\\n]{0,50}(alex|run|runs|running)|(alex|run|runs|running)[^.!?\\n]{0,50}\\bbootcamp\\b"
+  },
+  {
+   "name": "launch_oncall",
+   "re": "(october|\\boct\\b)\\.? ?[678]\\b[^.!?\\n]{0,50}(alex|jordan|priya)|(alex|jordan|priya)[^.!?\\n]{0,50}(october|\\boct\\b)\\.? ?[678]\\b|launch[- ]week[^.!?\\n]{0,50}on-?call|rota (fix|change|swap)|on-?call[^.!?\\n]{0,50}(launch day|the 7th|the 8th)|(launch day|the 7th|the 8th)[^.!?\\n]{0,50}on-?call|staging on-?call|take the (7th|8th)|(7th|8th) is my"
+  },
+  {
+   "name": "reindex_eta",
+   "re": "reindex\\w*[^.!?\\n]{0,50}(october|\\boct\\b|done (on|by)|finish\\w*[^.!?\\n]{0,50}(by|on))|(october|\\boct\\b)\\.? ?4\\b|six days|three days each|shard (3|11)\\b|reindex\\w*[^.!?\\n]{0,50}freeze|freeze[^.!?\\n]{0,50}reindex"
+  },
+  {
+   "name": "node_cost",
+   "re": "4,?800|(monthly|per month)[^.!?\\n]{0,50}(bill|cost)[^.!?\\n]{0,50}nodes?|nodes?[^.!?\\n]{0,50}(monthly|per month)[^.!?\\n]{0,50}(cost|bill|total)|nodes? (are|went|is) live|h100s?[^.!?\\n]{0,50}\\blive\\b"
+  },
+  {
+   "name": "intern_onboarding",
+   "re": "intern\\w*[^.!?\\n]{0,50}onboard|onboard\\w*[^.!?\\n]{0,50}intern"
+  },
+  {
+   "name": "launch_incident",
+   "re": "(5xx|error) spike[^.!?\\n]{0,50}(cutover|launch)|(cutover|launch)[^.!?\\n]{0,50}(5xx|error) spike|pool exhaustion|scal(e|ing) (up )?the pool|pool[- ]size|postmortem friday"
+  },
+  {
+   "name": "freeze_exception",
+   "re": "freeze exception|under the freeze|merg\\w*[^.!?\\n]{0,50}freeze|freeze[^.!?\\n]{0,50}merg|\\bp0 (fix|request|only)|approved by mina|mina'?s approval|note the exception"
+  },
+  {
+   "name": "announce_time",
+   "re": "announcement[^.!?\\n]{0,50}(\\b\\d{1,2}(:\\d\\d)? ?(am|pm|pt)\\b|09:00|10:00)|(09:00|10:00|\\b9 ?am|\\b10 ?am)[^.!?\\n]{0,50}announc|cutover[^.!?\\n]{0,50}(\\b\\d{1,2}:\\d\\d\\b|\\b6 ?am\\b)|(06:00|\\b6 ?am\\b)[^.!?\\n]{0,50}cutover|joint announcement|three hours before|extra hour"
+  },
+  {
+   "name": "headcount",
+   "re": "one more (backend )?(hire|engineer|headcount)|extra (backend )?(hire|headcount)|another backend (hire|engineer)|headcount[^.!?\\n]{0,50}(pulled|cancel|withdraw)|(pulled|cancel|withdraw)\\w*[^.!?\\n]{0,50}headcount|open the req"
+  },
+  {
+   "name": "hotfix_gate",
+   "re": "hotfix[^.!?\\n]{0,50}(gate|lower|0\\.8)|(gate|lower\\w*)[^.!?\\n]{0,50}hotfix"
+  },
+  {
+   "name": "blog_date",
+   "re": "blog[^.!?\\n]{0,50}(moved|october|\\boct\\b|9th|14th|16th)|api docs[^.!?\\n]{0,50}(live|by the)"
+  },
+  {
+   "name": "retro",
+   "re": "retro\\b[^.!?\\n]{0,50}(facilitat|priya|jordan|friday|october|\\boct\\b|14:00|15:00)|(facilitat|priya|jordan)\\w*[^.!?\\n]{0,50}\\bretro\\b|all-hands retro|\\bfacilitat"
+  },
+  {
+   "name": "partner_figure",
+   "re": "\\b(three|four|five|3\\.8|[3-5](\\.\\d)?)\\s?points?\\b|hard[- ]slice[^.!?\\n]{0,50}(\\+|points|improv)|told the partner|day-?1 (numbers|quality)|about (four|five)(?! ?minutes?)|measured number|corrected figure"
+  },
+  {
+   "name": "dashboard_outage",
+   "re": "dashboard[^.!?\\n]{0,50}\\b(down|outage|certificates?|cert|tls)\\b|(expired|tls) cert|ingress cert|dashboard (api )?key|token rotation from|it was the cert|\\bthe cert\\b"
+  },
+  {
+   "name": "demo_change",
+   "re": "demo[^.!?\\n]{0,50}(thursday 11|11:00|\\b11 ?am|failover)|failover[^.!?\\n]{0,50}demo|live failover|demo (moves|moved) to (thursday|wednesday)|moved the demo"
+  },
+  {
+   "name": "launch_contingency",
+   "re": "postpone\\w*[^.!?\\n]{0,50}announcement|announcement[^.!?\\n]{0,50}postpone|by 08:00|08:00 pt|contingency|06:50|cutover (finished|is done|complete|done)"
+  },
+  {
+   "name": "contractor_detail",
+   "re": "labeling contractor|contractors?[^.!?\\n]{0,50}(\\bend\\b|october 31|oct 31|roll off)|october 31|oct 31|front-?load|not the percentage"
+  },
+  {
+   "name": "reorg_shelved",
+   "re": "stays independent|independent through|off the table|board decided|no org changes|org changes? (are |is )?planned"
+  },
+  {
+   "name": "private_stances",
+   "re": "safer bet|not saying (that )?in channel|label noise|noise in the tail|trust (the )?v3\\.5|felt junior|i'?d have said l4|9:30 was better|won'?t fight|didn'?t want the (index )?migration|on top of rollout|shard inventory review|take the shard inventory"
+  },
+  {
+   "name": "distractor_facts_v01",
+   "re": "recall@10|\\b0\\.90\\b|northwind|q3 (all-hands )?retro|october 15|oct 15|archive tier|per tb|300 dollars|read-?replica|october 13|oct 13|v2 labels|hard-slice v2|announcement copy|1:1s? (move|moving)|reranker-?c\\b|security audit|\\b30k\\b|october 16|oct 16|october 21|oct 21|design review[^.!?\\n]{0,50}friday"
+  }
+ ],
+ "facts": [
+  "the product launch date, whether it moved, and anything about Legal approval",
+  "which reranker (A or B) anyone prefers, which one won the benchmark, or which one is the production choice",
+  "the value of the regression-gate quality threshold, or that it changed",
+  "the standup time, or that it moved",
+  "who owns the index migration, or that it changed hands",
+  "any date for the code freeze or eval freeze",
+  "any latency test result for the rerankers (p99)",
+  "which dataset version (v3.x) numbers must be reported on",
+  "the day or time of the model review, or that it moved",
+  "hiring outcomes: offers, levels, start dates, interview days, who is on the panel, who owns onboarding",
+  "the embed-service key: that it was rotated, or why; any exposed or leaked credential; any security incident",
+  "Priya's time off and any October dates",
+  "how many GPU nodes are being added, who approved them, or procurement status",
+  "who presents at the partner demo",
+  "why Alex is unavailable on Friday afternoon",
+  "anyone's private reservations about the reranker decision",
+  "which collection (docs or tickets) finished rebuilding",
+  "whether Alex knows or acknowledged the new launch date",
+  "Priya's eval report being behind or its reason; the cause of Tuesday's query-api incident; any reorg or board discussion; contractor budget changes; who is on weekend on-call or any swap; the vendor quote per node; whether Priya is worried about the eval timeline",
+  "the query-api alert threshold value; the launch blog post date; the auth DB migration; the design review time; Jordan's day off; the ML intern candidate; the sales demo; the platform sync time; the dashboard token rotation",
+  "the onboarding bootcamp for the new backend engineer: that it exists, its dates or who runs it",
+  "the launch-week production on-call rota (who has Oct 6, 7 and 8) and any swap; the staging rota for freeze week",
+  "when the full reindex will finish, how many days it takes, or which shard is being reindexed",
+  "the monthly cost of the new GPU nodes, or that the nodes went live",
+  "who owns the ML intern's onboarding",
+  "the launch-day error spike: that it happened, how long it lasted, or its cause",
+  "the code freeze rules (P0 only, manager approval) and any merge made under a freeze exception",
+  "the time of the joint launch announcement or the cutover, or that the announcement time moved",
+  "the extra backend headcount: that it was approved, or that it was pulled",
+  "the hotfix-branch gate value or that any gate was temporarily lowered",
+  "the launch blog post date or that it moved; the partner's own blog post date",
+  "who facilitates the launch retro or that it changed; the retro date and time; the Q3 all-hands retro date",
+  "the day-1 hard-slice improvement figures and what figure the partner was told",
+  "the dashboard outage: its cause, its duration, or what Alex first suspected",
+  "the partner demo moving to Thursday 11:00 and the live failover request",
+  "the launch-day contingency (postponing the announcement if cutover is late) and when cutover finished",
+  "contractor details: the labeling contractors' end date and when the cut takes effect",
+  "that the board shelved the reorg or that Atlas stays independent",
+  "private stances: Jordan's preference for Reranker-A after the decision; Priya's doubt about v3.6 label noise; Alex's view that the backend candidate is L4; Mina's preference for a 9:30 standup; Alex not wanting the index migration and Priya taking the shard inventory review",
+  "distractor facts: the recall@10 gate; the storage vendor quote per TB; the Northwind demo; the eval-runner image rebuild and eval reindex; the design review moving to Friday; the dashboard API key rotation after the cert fix; the Reranker-C trial; Alex's day off on Oct 2; the security audit budget; the auth DB read-replica migration; the hard-slice v2 labels; the announcement copy deadline; 1:1s moving to Tuesdays"
+ ],
+ "touch_topics": [
+  "launch prep in general (checklist, comms plan, rollback notes) without any date or timing",
+  "the reranker work (training runs, profiling, dashboards) without saying which reranker anyone prefers or chose",
+  "the CI quality gate in general (flaky runs, gate failures) without any number",
+  "the daily standup (agenda, someone running late) without its time",
+  "the index migration in general (shards, reindex progress) without saying who owns it",
+  "the upcoming freeze in general (things to land before it) without dates",
+  "the model review in general (slides, what to show) without its day or time",
+  "hiring in general (job posting, screening process) without candidates, decisions, levels or dates",
+  "credential hygiene in general (vault, secrets scanning) without naming which key was rotated or why",
+  "time off and coverage in general without Priya's dates",
+  "eval data cuts (v2.x only) and labeling",
+  "the partner demo in general (slides, room, run-through) without who presents",
+  "GPU quota and queue pressure without counts of new nodes or approvals",
+  "the collection rebuild in general without saying which one finished",
+  "on-call and paging in general without saying who is on this weekend",
+  "onboarding prep for the new hire in general (accounts, laptop, reading list) without dates or who runs a bootcamp",
+  "launch-day logistics in general (who is around, war room, snacks) without cutover or announcement times",
+  "the reindex work in general (progress, disk, throughput) without finish dates or shard numbers",
+  "postmortem and incident-review habits in general without naming any incident's cause",
+  "code freeze etiquette in general (what counts as urgent) without rules, approvals or merges",
+  "the partner relationship in general (who their contact is, tone of calls) without demo details, figures or blog dates",
+  "the retro format in general without dates or facilitators",
+  "budget season in general (spreadsheets, approvals take time) without headcount, contractor or audit numbers",
+  "dashboards and certificate renewals in general without the outage or its cause"
+ ],
+ "avoid_words": []
+}

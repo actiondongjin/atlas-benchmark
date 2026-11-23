@@ -1,0 +1,32 @@
+{
+ "Mina": {
+  "role": "Engineering manager, Atlas team lead",
+  "tone": "decisive, warm",
+  "style": "short imperatives, names an action item, closes threads with a decision",
+  "expertise": "planning, cross-team coordination"
+ },
+ "Sofia": {
+  "role": "Director of Product",
+  "tone": "formal, measured",
+  "style": "full sentences, hedged estimates, no slang",
+  "expertise": "business planning, legal and partner coordination"
+ },
+ "Alex": {
+  "role": "Senior backend engineer, rollout owner",
+  "tone": "casual, direct",
+  "style": "lowercase openings, contractions, 'imo' and 'tbh', quick follow-ups",
+  "expertise": "deployment, latency, rollout checklists"
+ },
+ "Priya": {
+  "role": "ML researcher, evaluation owner",
+  "tone": "precise, careful",
+  "style": "cites numbers and eval slices, states caveats, corrects herself openly",
+  "expertise": "evaluation, calibration, rerankers"
+ },
+ "Jordan": {
+  "role": "DevOps / SRE",
+  "tone": "terse, dry",
+  "style": "fragments, ops jargon, drops articles, one-line replies",
+  "expertise": "kubernetes, indexing infrastructure, on-call"
+ }
+}

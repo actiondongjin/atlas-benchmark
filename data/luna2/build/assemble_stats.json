@@ -1,0 +1,19 @@
+{
+ "filler_source": "data/luna2/build/filler.jsonl",
+ "dropped_threads": 0,
+ "dropped_detail": {},
+ "audit_dropped_threads": [
+  "T00157",
+  "T00165",
+  "T00398",
+  "T00411",
+  "T00494",
+  "T00595",
+  "T00723",
+  "T01108",
+  "T01305",
+  "T01371",
+  "T01478",
+  "T01590"
+ ]
+}

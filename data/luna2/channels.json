@@ -1,0 +1,73 @@
+{
+ "#atlas-general": [
+  "Mina",
+  "Sofia",
+  "Alex",
+  "Priya",
+  "Jordan"
+ ],
+ "#model-dev": [
+  "Mina",
+  "Alex",
+  "Priya",
+  "Jordan"
+ ],
+ "#platform-ops": [
+  "Alex",
+  "Priya",
+  "Jordan"
+ ],
+ "#leadership": [
+  "Mina",
+  "Sofia"
+ ],
+ "dm:Alex-Priya": [
+  "Alex",
+  "Priya"
+ ],
+ "dm:Alex-Jordan": [
+  "Alex",
+  "Jordan"
+ ],
+ "dm:Mina-Priya": [
+  "Mina",
+  "Priya"
+ ],
+ "dm:Alex": [
+  "Alex"
+ ],
+ "dm:Priya": [
+  "Priya"
+ ],
+ "dm:Jordan": [
+  "Jordan"
+ ],
+ "dm:Mina": [
+  "Mina"
+ ],
+ "dm:Sofia": [
+  "Sofia"
+ ],
+ "#partners": [
+  "Sofia",
+  "Mina",
+  "Alex"
+ ],
+ "dm:Mina-Alex": [
+  "Mina",
+  "Alex"
+ ],
+ "dm:Mina-Jordan": [
+  "Mina",
+  "Jordan"
+ ],
+ "dm:Priya-Jordan": [
+  "Priya",
+  "Jordan"
+ ],
+ "dm:Alex-Jordan-Priya": [
+  "Alex",
+  "Jordan",
+  "Priya"
+ ]
+}
